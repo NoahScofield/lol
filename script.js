@@ -1,21 +1,49 @@
-/Variables for lines within document /
-var wrapperEle = document.body.querySelector(".wrapper");
-var wrapperEle = document.body.querySelector(".wrapper1");
-var wrapperEle = document.body.querySelector(".wrapper2");
-var wrapperEle = document.body.querySelector(".wrapper3");
-/User Input /
-var mpy = Number(prompt("How many miles do you drive a year?"));
-var cog = Number(prompt("What is the cost of gas in your are?"));
-/Calculation + Wrapper Seletion /
-function getGas(mpy,cog,mpg,wrapper) {
-  var answer = (mpy/mpg) * cog;
-  document.querySelector(wrapper).innerHTML = 
-    "To drive a car with an MPG rating of " + mpg + " for " +  mpy +   " miles at " + cog + " per gallon would cost " + answer;
+var data = [
+  {
+    color: "pink",
+    number: -1
+  },
+  {
+    color: "red",
+    number: 0
+  },
+  {
+    color:"blue",
+    number: 0
+  },
+  
+];
+var colors=[];
+function tap(color,number) {
+  var that= this;
+  this.color = color;
+  this.number = number;
+  this.ele=document.createElement("div");
+  this.ele.style.fontsize = "18px";
+  this.ele.style.height = "100px";
+  this.ele.style.width = "200px";
+  this.ele.style.justifyContent = "center";
+  this.ele.style.display = "flex";
+  this.ele.style.alignItems = "center";
+  this.ele.style.borderRadius = "10px";
+  this.ele.innerHTML = this.color + " " + this.number;
+
+
+
+  this.ele.addEventListener("click", function(){
+    that.increaseNumber();
+  })
+    document.body.appendChild(this.ele);
+}
+tap.prototype.increaseNumber = function(){
+  this.number=this.number+1,
+ 
+  this.ele.innerHTML=this.number+" "+this.color;
 }
 
-/Calling the functions /
 
-getGas(mpy,cog,12, ".wrapper");
-getGas(mpy,cog,17, ".wrapper1");
-getGas(mpy,cog,26, ".wrapper2");
-getGas(mpy,cog,29, ".wrapper3");
+for(var i=0; i<data.length; i++){
+  colors.push(new tap(data[i].color, data[i].number))
+}
+
+colors[0].increaseNumber();
