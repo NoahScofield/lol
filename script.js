@@ -1,32 +1,32 @@
 var data = [
+{number:-30
+},
   {
-    color: "pink",
-    number: -1
+    number: 14,
   },
   {
-    color: "red",
-    number: 0
+    number: 66,
   },
-  {
-    color:"blue",
-    number: 0
+  { number: 21,
   },
-  
+  { number:72,
+  },
+  {number: -4} 
 ];
-var colors=[];
-function tap(color,number) {
+var numero=[];
+function tap(number) {
   var that= this;
-  this.color = color;
   this.number = number;
   this.ele=document.createElement("div");
-  this.ele.style.fontsize = "18px";
-  this.ele.style.height = "100px";
-  this.ele.style.width = "200px";
-  this.ele.style.justifyContent = "center";
-  this.ele.style.display = "flex";
-  this.ele.style.alignItems = "center";
-  this.ele.style.borderRadius = "10px";
-  this.ele.innerHTML = this.color + " " + this.number;
+   if (this.number < 0) {
+ this.ele.innerHTML ="The number is "+  this.number + " and "+  " Is less then 0"; 
+}
+ else if (this.number > 50) {
+ this.ele.innerHTML ="The number is "+  this.number + " and "+  " Is greater than 50"; 
+}   else if (this.number = 14) {
+ this.ele.innerHTML ="The number is "+  this.number + " and "+  " Is equal to 14"; 
+} 
+
 
 
 
@@ -36,14 +36,12 @@ function tap(color,number) {
     document.body.appendChild(this.ele);
 }
 tap.prototype.increaseNumber = function(){
-  this.number=this.number+1,
- 
-  this.ele.innerHTML=this.number+" "+this.color;
+  this.number=this.number+1;
 }
 
 
 for(var i=0; i<data.length; i++){
-  colors.push(new tap(data[i].color, data[i].number))
+  numero.push(new tap(data[i].number))
 }
 
-colors[0].increaseNumber();
+numero[0].increaseNumber();
